@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace AiSdk;
 
-use AiSdk\Contracts\EmbeddingModelInterface;
+use AiSdk\Contracts\Model;
 use AiSdk\VoyageAI\VoyageAIOptions;
 use AiSdk\VoyageAI\VoyageAIProvider;
 
 /**
  * Friendly facade for the Voyage AI provider.
  *
- *   $model = VoyageAI::embedding('voyage-4-large');
+ *   $model = VoyageAI::model('voyage-4-large');
  */
 final class VoyageAI
 {
@@ -35,8 +35,8 @@ final class VoyageAI
         self::$default = null;
     }
 
-    public static function embedding(string $modelId): EmbeddingModelInterface
+    public static function model(string $modelId): Model
     {
-        return self::default()->embeddingModel($modelId);
+        return self::default()->model($modelId);
     }
 }

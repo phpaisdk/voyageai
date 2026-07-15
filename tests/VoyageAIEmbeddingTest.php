@@ -28,7 +28,7 @@ it('generates Voyage AI text embeddings', function () {
     VoyageAI::create(['apiKey' => 'voyage-test']);
 
     $result = Generate::embedding(['First document', 'Second document'])
-        ->model(VoyageAI::embedding('voyage-4-large'))
+        ->model(VoyageAI::model('voyage-4-large'))
         ->dimensions(512)
         ->providerOptions('voyageai', [
             'input_type' => 'document',
@@ -55,14 +55,14 @@ it('generates Voyage AI text embeddings', function () {
 it('accepts opaque Voyage AI embedding model ids', function () {
     VoyageAI::create(['apiKey' => 'voyage-test']);
 
-    expect(VoyageAI::embedding('future-voyage-model')->modelId())->toBe('future-voyage-model');
+    expect(VoyageAI::model('future-voyage-model')->modelId())->toBe('future-voyage-model');
 });
 
 it('rejects quantized Voyage AI output before sending a request', function () {
     VoyageAI::create(['apiKey' => 'voyage-test']);
 
     Generate::embedding('A document')
-        ->model(VoyageAI::embedding('voyage-4-large'))
+        ->model(VoyageAI::model('voyage-4-large'))
         ->providerOptions('voyageai', ['output_dtype' => 'binary'])
         ->run();
 })->throws(\AiSdk\Exceptions\InvalidArgumentException::class, 'only output_dtype: float');
@@ -71,7 +71,7 @@ it('rejects base64 Voyage AI output before sending a request', function () {
     VoyageAI::create(['apiKey' => 'voyage-test']);
 
     Generate::embedding('A document')
-        ->model(VoyageAI::embedding('voyage-4-large'))
+        ->model(VoyageAI::model('voyage-4-large'))
         ->providerOptions('voyageai', ['encoding_format' => 'base64'])
         ->run();
 })->throws(\AiSdk\Exceptions\InvalidArgumentException::class, 'do not support base64');

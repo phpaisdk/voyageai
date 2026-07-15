@@ -18,7 +18,7 @@ $result = Generate::embedding([
         'First document',
         'Second document',
     ])
-    ->model(VoyageAI::embedding('voyage-4-large'))
+    ->model(VoyageAI::model('voyage-4-large'))
     ->dimensions(512)
     ->providerOptions('voyageai', [
         'input_type' => 'document',
@@ -29,7 +29,7 @@ $vector = $result->output->vector;
 $vectors = $result->embeddings;
 ```
 
-The v0.5 API covers Voyage's text embeddings endpoint. Multimodal, contextualized chunk embeddings, and reranking use different API contracts and are not part of this package surface yet.
+The portable API covers Voyage's text embeddings endpoint. Multimodal, contextualized chunk embeddings, and reranking use different API contracts and are not part of this package surface yet.
 
 ## Configuration
 
@@ -52,7 +52,7 @@ Voyage's documented text embedding fields pass through unchanged:
 
 ```php
 $result = Generate::embedding('A search query')
-    ->model(VoyageAI::embedding('voyage-4-large'))
+    ->model(VoyageAI::model('voyage-4-large'))
     ->providerOptions('voyageai', [
         'input_type' => 'query',
         'truncation' => true,
@@ -63,7 +63,7 @@ $result = Generate::embedding('A search query')
 
 `dimensions()` maps to Voyage's `output_dimension` field. Model IDs pass through unchanged so Voyage's API remains the source of truth for model availability and supported dimensions.
 
-The portable SDK result is a float vector, so v0.5 accepts Voyage's `output_dtype: float` only and rejects base64 encoding. Quantized and bit-packed output need a separate result contract rather than being mislabeled as ordinary float dimensions.
+The portable SDK result is a float vector, so this adapter accepts Voyage's `output_dtype: float` only and rejects base64 encoding. Quantized and bit-packed output need a separate result contract rather than being mislabeled as ordinary float dimensions.
 
 ## Testing
 

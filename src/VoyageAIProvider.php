@@ -18,7 +18,7 @@ final class VoyageAIProvider extends BaseProvider implements EmbeddingProviderIn
         return VoyageAIOptions::PROVIDER_NAME;
     }
 
-    public function embeddingModel(string $modelId): EmbeddingModelInterface
+    protected function embeddingModel(string $modelId): EmbeddingModelInterface
     {
         return new VoyageAIEmbeddingModel($modelId, $this->options);
     }
