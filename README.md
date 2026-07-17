@@ -79,8 +79,13 @@ The portable SDK result is a float vector, so this adapter accepts Voyage's `out
 composer test
 ```
 
-## Links
+## Documentation
 
-- [Voyage AI Embeddings API](https://docs.voyageai.com/reference/embeddings-api)
-- [Core Package](https://github.com/phpaisdk/core)
-- [Project Documentation](https://github.com/phpaisdk)
+- [PHP AI SDK documentation](https://phpaisdk.com/docs)
+- [Voyage AI documentation](https://phpaisdk.com/docs/voyageai)
+
+## Community
+
+- [Contributing](https://github.com/phpaisdk/.github/blob/main/CONTRIBUTING.md)
+- [Support](https://github.com/phpaisdk/.github/blob/main/SUPPORT.md)
+- For private security reports, email [security@phpaisdk.com](mailto:security@phpaisdk.com).
